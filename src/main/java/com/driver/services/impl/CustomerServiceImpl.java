@@ -60,12 +60,12 @@ public class CustomerServiceImpl implements CustomerService {
 		TripBooking tripBooking= new TripBooking();
 		Customer customer=customerRepository2.findById(customerId).get();
 		tripBooking.setCustomer(customer);
-		tripBooking.setTripKm(distanceInKm);
-		tripBooking.setTripStatus(TripStatus.CONFIRMED);
+		tripBooking.setDistanceInKm(distanceInKm);
+		tripBooking.setStatus(TripStatus.CONFIRMED);
 		tripBooking.setBill(distanceInKm*availableDriver.getCab().getPerKmRate());
 		tripBooking.setDriver(availableDriver);
-		tripBooking.setStartLocation(fromLocation);
-		tripBooking.setEndLocation(toLocation);
+		tripBooking.setFromLocation(fromLocation);
+		tripBooking.setToLocation(toLocation);
 
 
 
@@ -90,11 +90,11 @@ public class CustomerServiceImpl implements CustomerService {
 
 		TripBooking newTrip= new TripBooking();
 		driver.getCab().setAvailable(true);
-		newTrip.setStartLocation(tripBooking.getStartLocation());
-		newTrip.setEndLocation(tripBooking.getEndLocation());
-		newTrip.setTripKm(tripBooking.getTripKm());
+		newTrip.setStatus(TripStatus.CANCELED);
+		newTrip.setFromLocation(tripBooking.getFromLocation());
+		newTrip.setToLocation(tripBooking.getToLocation());
+		newTrip.setDistanceInKm(tripBooking.getDistanceInKm());
 		newTrip.setBill(tripBooking.getBill());
-		newTrip.setTripStatus(TripStatus.CANCELED);
 
 		newTrip.setCustomer(customer);
 		newTrip.setDriver(driver);
@@ -113,11 +113,11 @@ public class CustomerServiceImpl implements CustomerService {
 
 		TripBooking newTrip= new TripBooking();
 		driver.getCab().setAvailable(true);
-		newTrip.setStartLocation(tripBooking.getStartLocation());
-		newTrip.setEndLocation(tripBooking.getEndLocation());
-		newTrip.setTripKm(tripBooking.getTripKm());
+		newTrip.setStatus(TripStatus.COMPLETED);
+		newTrip.setFromLocation(tripBooking.getFromLocation());
+		newTrip.setToLocation(tripBooking.getToLocation());
+		newTrip.setDistanceInKm(tripBooking.getDistanceInKm());
 		newTrip.setBill(tripBooking.getBill());
-		newTrip.setTripStatus(TripStatus.COMPLETED);
 
 		newTrip.setCustomer(customer);
 		newTrip.setDriver(driver);

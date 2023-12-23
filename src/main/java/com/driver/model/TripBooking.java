@@ -9,15 +9,15 @@ public class TripBooking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tripBookingId;
 
-    private String startLocation;
-     private String endLocation;
+    private String fromLocation;
+     private String toLocation;
 
-     private Integer tripKm;
+     private Integer distanceInKm;
       private  Integer bill;
 
       @Enumerated(value = EnumType.STRING)
 
-      private TripStatus tripStatus;
+      private TripStatus Status;
 
       @ManyToOne
       @JoinColumn
@@ -27,6 +27,7 @@ public class TripBooking {
     @JoinColumn
     private Customer customer;
 
+
     public Integer getTripBookingId() {
         return tripBookingId;
     }
@@ -35,28 +36,36 @@ public class TripBooking {
         this.tripBookingId = tripBookingId;
     }
 
-    public String getStartLocation() {
-        return startLocation;
+    public String getFromLocation() {
+        return fromLocation;
     }
 
-    public void setStartLocation(String startLocation) {
-        this.startLocation = startLocation;
+    public void setFromLocation(String fromLocation) {
+        this.fromLocation = fromLocation;
     }
 
-    public String getEndLocation() {
-        return endLocation;
+    public String getToLocation() {
+        return toLocation;
     }
 
-    public void setEndLocation(String endLocation) {
-        this.endLocation = endLocation;
+    public void setToLocation(String toLocation) {
+        this.toLocation = toLocation;
     }
 
-    public Integer getTripKm() {
-        return tripKm;
+    public Integer getDistanceInKm() {
+        return distanceInKm;
     }
 
-    public void setTripKm(Integer tripKm) {
-        this.tripKm = tripKm;
+    public void setDistanceInKm(Integer distanceInKm) {
+        this.distanceInKm = distanceInKm;
+    }
+
+    public TripStatus getStatus() {
+        return Status;
+    }
+
+    public void setStatus(TripStatus status) {
+        Status = status;
     }
 
     public Integer getBill() {
@@ -67,13 +76,7 @@ public class TripBooking {
         this.bill = bill;
     }
 
-    public TripStatus getTripStatus() {
-        return tripStatus;
-    }
 
-    public void setTripStatus(TripStatus tripStatus) {
-        this.tripStatus = tripStatus;
-    }
 
     public Driver getDriver() {
         return driver;
